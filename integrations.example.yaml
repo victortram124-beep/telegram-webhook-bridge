@@ -1,0 +1,34 @@
+# Webhook bridge integrations
+# Copy to integrations.yaml and edit per your services
+
+integrations:
+  - name: stripe
+    path: /hook/stripe
+    signature_method: stripe
+    signing_secret: ${STRIPE_WEBHOOK_SECRET}
+    telegram_chat_id: "-1001234567890"
+    templates:
+      "charge.succeeded": "💰 *Payment received*\nAmount: ${{ data.data.object.amount }}\nFrom: {{ data.data.object.billing_details.email }}"
+      "customer.subscription.deleted": "😢 *Subscription cancelled*\nCustomer: {{ data.data.object.customer }}"
+
+  - name: github
+    path: /hook/github
+    signature_method: github
+    signing_secret: ${GITHUB_WEBHOOK_SECRET}
+    telegram_chat_id: "987654321"
+    events_allowlist: [pull_request, issues, deployment_status]
+    default_template: |
+      🔧 *GitHub: {event}*
+      Repo: `{{ data.repository.full_name }}`
+      Actor: {{ data.sender.login }}
+
+  - name: custom-app
+    path: /hook/custom-app
+    signature_method: hmac
+    signing_secret: ${CUSTOM_WEBHOOK_SECRET}
+    telegram_chat_id: "987654321"
+    default_template: |
+      📨 *{name}* event: `{event}`
+      ```
+      {summary}
+      ```
