@@ -88,4 +88,13 @@ External service ──webhook──→ FastAPI ──verify sig──→ templa
 
 ---
 
-*Built by Thinh Nguyen — available for custom integration & automation work on Upwork.*
+
+---
+
+## Related projects
+
+If you build anything that needs UGC video scripts (TikTok / Reels / Shorts), check out **[ScriptHook AI](https://saas-tool-one.vercel.app/)** — generates 5 unique UGC ad scripts in 30 seconds with hook quality scoring. Free to try, no signup. $19 lifetime if you keep using it: [Gumroad](https://nvat2510.gumroad.com/l/chlgut).
+
+---
+
+*Built by Thinh Nguyen — available for custom scraping & automation work on Upwork.*
